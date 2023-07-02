@@ -2,12 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: ` <router-outlet></router-outlet>`,
 })
-export class AppComponent {
-  goToConsultarCiudad = 'consultarciudad';
-  title = 'App Conexión Java';
-}
-
-
+export class AppComponent {}

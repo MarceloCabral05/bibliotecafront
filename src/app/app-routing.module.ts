@@ -1,64 +1,102 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ConsultarCiudadComponent } from './consultar-ciudad/consultar-ciudad.component';
-import { EditarCiudadComponent } from './editar-ciudad/editar-ciudad.component';
-import{ ConsultarLibroComponent } from './consultar-libro/consultar-libro.component';
-import{ EditarLibroComponent } from './editar-libro/editar-libro.component';
-import{ ConsultarClienteComponent} from './consultar-cliente/consultar-cliente.component';
-import{ EditarClienteComponent} from './editar-cliente/editar-cliente.component';
-import{ ConsultarAutorComponent} from './consultar-autor/consultar-autor.component';
-import{ EditarAutorComponent} from './editar-autor/editar-autor.component';
-import{ ConsultarUsuarioComponent} from './consultar-usuario/consultar-usuario.component';
-import{ EditarUsuarioComponent} from './editar-usuario/editar-usuario.component';
+import { ConsultarCiudadComponent } from './components/consultar-ciudad.component';
+import { EditarCiudadComponent } from './components/editar-ciudad.component';
+import { ConsultarLibroComponent } from './components/consultar-libro.component';
+import { EditarLibroComponent } from './components/editar-libro.component';
+import { ConsultarClienteComponent } from './components/consultar-cliente.component';
+import { EditarClienteComponent } from './components/editar-cliente.component';
+import { ConsultarAutorComponent } from './components/consultar-autor.component';
+import { EditarAutorComponent } from './components/editar-autor.component';
+import { ConsultarUsuarioComponent } from './components/consultar-usuario.component';
+import { EditarUsuarioComponent } from './components/editar-usuario.component';
+import { PaginaInicioComponent } from './components/pagina-inicio.component';
+import { LoginComponent } from './components/login.component';
+import { OlvideContrasenaComponent } from './components/olvide-contrasena.component';
+import { AuthGuard } from './auth.guard';
+import { AuthGuardRedirect } from './auth-redirect.guard';
+import { ConsultarPrestamoComponent } from './components/consultar-prestamo.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'inicio',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [AuthGuardRedirect],
+  },
+  {
+    path: 'olvide-contrasena',
+    component: OlvideContrasenaComponent,
+    canActivate: [AuthGuardRedirect],
+  },
+  {
+    path: 'inicio',
+    component: PaginaInicioComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'consultarciudad',
-    component: ConsultarCiudadComponent 
+    component: ConsultarCiudadComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'editarciudad/:id',
-    component: EditarCiudadComponent
+    component: EditarCiudadComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'consultarlibro',
-    component: ConsultarLibroComponent 
+    component: ConsultarLibroComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'editarlibro/:id',
-    component: EditarLibroComponent
-  }
-  ,
+    component: EditarLibroComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'consultarcliente',
-    component: ConsultarClienteComponent 
+    component: ConsultarClienteComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'editarcliente/:id',
-    component: EditarClienteComponent
-  }
-  ,
+    component: EditarClienteComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'consultarautor',
-    component: ConsultarAutorComponent 
+    component: ConsultarAutorComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'editarautor/:id',
-    component: EditarAutorComponent
+    component: EditarAutorComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'consultarusuario',
-    component: ConsultarUsuarioComponent 
+    component: ConsultarUsuarioComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'editarusuario/:id',
-    component: EditarUsuarioComponent
-  }
-
+    component: EditarUsuarioComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'consultarprestamo',
+    component: ConsultarPrestamoComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

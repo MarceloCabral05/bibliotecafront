@@ -11,25 +11,27 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
-
-
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ConsultarCiudadComponent } from './consultar-ciudad/consultar-ciudad.component';
-import { EditarCiudadComponent } from './editar-ciudad/editar-ciudad.component';
+import { ConsultarCiudadComponent } from './components/consultar-ciudad.component';
+import { EditarCiudadComponent } from './components/editar-ciudad.component';
 import { NgModule } from '@angular/core';
-import { ConsultarLibroComponent } from './consultar-libro/consultar-libro.component';
-import { EditarLibroComponent } from './editar-libro/editar-libro.component';
-import { ConsultarClienteComponent } from './consultar-cliente/consultar-cliente.component';
-import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
-import { ConsultarAutorComponent } from './consultar-autor/consultar-autor.component';
-import { EditarAutorComponent } from './editar-autor/editar-autor.component';
-import { ConsultarUsuarioComponent } from './consultar-usuario/consultar-usuario.component';
-import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
-
+import { ConsultarLibroComponent } from './components/consultar-libro.component';
+import { EditarLibroComponent } from './components/editar-libro.component';
+import { ConsultarClienteComponent } from './components/consultar-cliente.component';
+import { EditarClienteComponent } from './components/editar-cliente.component';
+import { ConsultarAutorComponent } from './components/consultar-autor.component';
+import { EditarAutorComponent } from './components/editar-autor.component';
+import { ConsultarUsuarioComponent } from './components/consultar-usuario.component';
+import { EditarUsuarioComponent } from './components/editar-usuario.component';
+import { PaginaInicioComponent } from './components/pagina-inicio.component';
+import { EditarPrestamoComponent } from './components/editar-prestamo.component';
+import { LoginComponent } from './components/login.component';
+import { OlvideContrasenaComponent } from './components/olvide-contrasena.component';
+import { PrestamoService } from './components/prestamo.service';
+import { ConsultarPrestamoComponent } from './components/consultar-prestamo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,12 @@ import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.componen
     ConsultarAutorComponent,
     EditarAutorComponent,
     ConsultarUsuarioComponent,
-    EditarUsuarioComponent
+    EditarUsuarioComponent,
+    PaginaInicioComponent,
+    EditarPrestamoComponent,
+    LoginComponent,
+    OlvideContrasenaComponent,
+    ConsultarPrestamoComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,14 +63,14 @@ import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.componen
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
+    FormsModule, // Agrega FormsModule
     ReactiveFormsModule,
-    MatCardModule, 
+    MatCardModule,
     MatSnackBarModule,
     MatPaginatorModule,
-    MatSelectModule 
+    MatSelectModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [PrestamoService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
