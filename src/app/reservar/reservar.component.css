@@ -1,0 +1,59 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.libros-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.libro-card {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.carrito-container {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.carrito-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.carrito-item:last-child {
+  border-bottom: none;
+}
+
+.carrito-item-column {
+  flex-basis: 25%;
+}
+
+.total-label {
+  margin-top: 10px;
+  text-align: right;
+}
+
+button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ccc;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #aaa;
+}

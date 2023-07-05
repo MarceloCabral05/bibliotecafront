@@ -1,0 +1,55 @@
+<div class="container">
+  <h2>Seleccionar Cliente</h2>
+  <mat-form-field>
+    <mat-label>Seleccionar Cliente</mat-label>
+    <mat-select [(ngModel)]="clienteSeleccionado">
+      <mat-option *ngFor="let cliente of clientes" [value]="cliente.codigo">
+        {{ cliente.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="clienteSeleccionado">
+    <h2>Libros Disponibles</h2>
+    <div class="libros-container">
+      <div *ngFor="let libro of libros" class="libro-card">
+        <h3>{{ libro.descripcion }}</h3>
+        <p>Cantidad disponible: {{ libro.cantidad }}</p>
+        <button
+          (click)="agregarLibro(libro)"
+          [disabled]="libroEnCarrito(libro)"
+        >
+          Agregar
+        </button>
+      </div>
+    </div>
+
+    <h2>Libros seleccionados</h2>
+    <table *ngIf="carrito.length > 0" class="carrito-table">
+      <thead>
+        <tr>
+          <th>Descripción</th>
+          <th>Cantidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let libro of carrito">
+          <td>{{ libro.descripcion }}</td>
+          <td>
+            <button (click)="eliminarLibro(libro)">-</button>
+            {{ libro.cantidad }}
+          </td>
+          <td>
+            <button (click)="eliminarLibro(libro)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="total-label" *ngIf="carrito.length > 0 && clienteSeleccionado">
+    <button (click)="finalizarReserva()">Finalizar Reserva</button>
+  </div>
+</div>

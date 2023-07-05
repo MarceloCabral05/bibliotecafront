@@ -1,0 +1,40 @@
+<mat-card class="example-card">
+    <form (ngSubmit)="guardarUsuario()" #usuarioForm="ngForm">
+        <mat-card-header>
+            <mat-card-title>Editar Usuario</mat-card-title>
+            <mat-card-subtitle>Edite los datos y luego presione el botón Guardar</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Código" value="{{ id }}" readonly="true" name="codigo">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="Usuario" [(ngModel)]="username" name="username" required></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Contraseña" [(ngModel)]="password" name="password" [type]="hide ? 'password' : 'text'" required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Pregunta de seguridad</mat-label>
+                <mat-select [(ngModel)]="selectedQuestion" name="preguntaSeguridad" required>
+                    <mat-option *ngFor="let question of securityQuestions" [value]="question">{{ question }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Respuesta" [(ngModel)]="answer" name="respuesta" [disabled]="!isQuestionSelected()" required>
+                <mat-error *ngIf="!isQuestionSelected() || !answer">Debes seleccionar una pregunta y proporcionar una respuesta.</mat-error>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-raised-button color="primary" [disabled]="usuarioForm.invalid">Guardar</button>
+            <button mat-raised-button routerLink="/consultarusuario">Volver</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

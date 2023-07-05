@@ -1,0 +1,44 @@
+.example-card {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.example-card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.example-card-subtitle {
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 10px;
+}
+
+.container {
+  margin-bottom: 20px;
+}
+
+.example-full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.mat-form-field {
+  display: block;
+}
+
+.mat-select {
+  width: 100%;
+}
+
+.mat-error {
+  font-size: 12px;
+  color: #ff0000;
+  margin-top: 5px;
+}
+
+.mat-card-actions {
+  justify-content: flex-end;
+  margin-top: 20px;
+}

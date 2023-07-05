@@ -40,6 +40,15 @@ import axios from 'axios';
         <mat-label>Observación</mat-label>
         <textarea
           matInput
+          placeholder="Escriba valor"
+          [(ngModel)]="obs"
+          name="valor"
+        ></textarea>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Observación</mat-label>
+        <textarea
+          matInput
           placeholder="Escriba la Observación del libro"
           [(ngModel)]="obs"
           name="obs"
@@ -60,6 +69,7 @@ export class EditarLibroComponent implements OnInit {
   descripcion: any;
   cantidad: any;
   obs: any;
+  valor: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -93,6 +103,7 @@ export class EditarLibroComponent implements OnInit {
       descripcion: this.descripcion,
       cantidad: this.cantidad,
       obs: this.obs,
+      valor: this.valor,
     };
 
     axios

@@ -20,7 +20,8 @@ import { Router } from '@angular/router';
     <div class="container">
       <h1>App de Biblioteca</h1>
       <nav>
-        <button mat-button routerLink="/consultarprestamo">Préstamos</button>
+      <button mat-button routerLink="/prestar">Nuevo Préstamo</button>
+        <button mat-button routerLink="/consultarprestamo">Consultar Préstamos</button>
         <button mat-button routerLink="/consultarlibro">Libros</button>
         <button mat-button routerLink="/consultarautor">Autores</button>
         <button mat-button routerLink="/consultarusuario">Usuarios</button>

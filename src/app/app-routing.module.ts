@@ -9,13 +9,16 @@ import { EditarClienteComponent } from './components/editar-cliente.component';
 import { ConsultarAutorComponent } from './components/consultar-autor.component';
 import { EditarAutorComponent } from './components/editar-autor.component';
 import { ConsultarUsuarioComponent } from './components/consultar-usuario.component';
-import { EditarUsuarioComponent } from './components/editar-usuario.component';
+
 import { PaginaInicioComponent } from './components/pagina-inicio.component';
 import { LoginComponent } from './components/login.component';
 import { OlvideContrasenaComponent } from './components/olvide-contrasena.component';
 import { AuthGuard } from './auth.guard';
 import { AuthGuardRedirect } from './auth-redirect.guard';
 import { ConsultarPrestamoComponent } from './components/consultar-prestamo.component';
+import { RecuperarContrasenaComponent } from './components/RecuperarContrasena/recuperar-contrasena.component';
+import { EditarUsuarioComponent } from './components/Usuario/editar-usuario.component';
+import { ReservarComponent } from './reservar/reservar.component';
 
 const routes: Routes = [
   {
@@ -30,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'olvide-contrasena',
-    component: OlvideContrasenaComponent,
+    component: RecuperarContrasenaComponent,
     canActivate: [AuthGuardRedirect],
   },
   {
@@ -91,6 +94,11 @@ const routes: Routes = [
   {
     path: 'consultarprestamo',
     component: ConsultarPrestamoComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'prestar',
+    component: ReservarComponent,
     canActivate: [AuthGuard],
   },
 ];

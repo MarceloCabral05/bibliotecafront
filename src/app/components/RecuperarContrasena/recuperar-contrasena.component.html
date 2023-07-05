@@ -1,0 +1,97 @@
+<mat-card class="example-card">
+  <mat-card-title>Recuperar Contraseña</mat-card-title>
+  <mat-card-content>
+    <div *ngIf="!isAnswered">
+      <mat-form-field>
+        <mat-label>Seleccione su pregunta de seguridad</mat-label>
+        <mat-select [(ngModel)]="selectedQuestion">
+          <mat-option
+            *ngFor="let question of securityQuestions"
+            [value]="question"
+          >
+            {{ question }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div *ngIf="isQuestionSelected() && !isAnswered">
+      <mat-form-field>
+        <mat-label>Respuesta</mat-label>
+        <input
+          matInput
+          [(ngModel)]="answer"
+          placeholder="Ingrese su respuesta"
+          required
+        />
+        <mat-error *ngIf="!answer">La respuesta es obligatoria</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Correo Electrónico</mat-label>
+        <input
+          matInput
+          [(ngModel)]="email"
+          placeholder="Ingrese su correo electrónico"
+          type="email"
+          required
+        />
+        <mat-error *ngIf="!email"
+          >El correo electrónico es obligatorio</mat-error
+        >
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="checkAnswer()"
+        *ngIf="answer && email"
+      >
+        Seguir
+      </button>
+    </div>
+    <div *ngIf="isAnswered">
+      <mat-form-field>
+        <mat-label>Nueva Contraseña</mat-label>
+        <input
+          matInput
+          [(ngModel)]="newPassword"
+          placeholder="Ingrese su nueva contraseña"
+          type="password"
+          required
+        />
+        <mat-error *ngIf="!newPassword">La contraseña es obligatoria</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Repetir Contraseña</mat-label>
+        <input
+          matInput
+          [(ngModel)]="confirmPassword"
+          placeholder="Repita su nueva contraseña"
+          type="password"
+          required
+        />
+        <mat-error *ngIf="!confirmPassword"
+          >La confirmación de contraseña es obligatoria</mat-error
+        >
+        <mat-error *ngIf="newPassword !== confirmPassword"
+          >Las contraseñas no coinciden</mat-error
+        >
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="unCheckAnswer()">
+        Volver
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="resetPassword()"
+        [disabled]="
+          newPassword !== confirmPassword ||
+          !newPassword ||
+          !confirmPassword ||
+          !answer
+        "
+      >
+        Guardar Contraseña
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
